@@ -1,0 +1,66 @@
+/** START: Photo section list item */
+.c-photo-list-item {
+	position: relative;
+	margin-bottom: 0;
+}
+
+.c-photo-list-item__link {
+	position: relative;
+	display: block;
+	transition: opacity .15s ease-in-out;
+}
+
+.c-photo-list-item__link::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	content: "";
+	background-color: rgba(255, 255, 255, 0);
+	transition: background-color .15s ease-in-out;
+}
+
+.c-photo-list-item__link:hover::after {
+	background-color: rgba(255, 255, 255, .15);
+}
+
+.c-photo-list-item__img {
+	width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+}
+
+.c-photo-list-item__caption {
+	padding-top: 1.5rem;
+	margin-bottom: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	color: #465e70;
+}
+
+/** END: Photo section list item */
+
+/** START: Photo section list */
+.c-photo-list__layout {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 20rem);
+	grid-auto-flow: row dense;
+	column-gap: 2.5rem;
+	row-gap: 2.5rem;
+	justify-content: space-around;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+@media (min-width: 75em) {
+	.c-photo-list__container {
+		max-width: 72rem;
+	}
+}
+
+/** END: Photo section list */

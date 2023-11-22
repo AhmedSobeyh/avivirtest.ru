@@ -1,0 +1,202 @@
+/* START: Event carousel item */
+.c-event-carousel-item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.c-event-carousel-item__media {
+	border-radius: 0.5rem;
+}
+
+.c-event-carousel-item__img {
+	border-radius: inherit;
+	object-fit: cover;
+	object-position: right;
+}
+
+.c-event-carousel-item__body {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+}
+
+.c-event-carousel-item__date {
+	font-size: 1.25rem;
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0.01em;
+	color: #c5b4aa;
+}
+
+.c-event-carousel-item__title {
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	color: #c5b4aa;
+}
+
+.c-event-carousel-item__title-link {
+	color: #c5b4aa;
+	text-decoration: none;
+	transition: color .15s ease-in-out;
+}
+
+.c-event-carousel-item__title-link:hover {
+	color: #c5b4aa;
+}
+
+.c-event-carousel-item__text {
+	margin-bottom: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #bdbdbd;
+}
+
+@media (min-width: 62em) {
+	.c-event-carousel-item {
+		flex-direction: row;
+		padding: 0;
+		filter: drop-shadow(0.25rem 0.25rem 2.5rem rgba(0, 0, 0, 0.4));
+		transition: filter .15s ease-in-out;
+	}
+
+	.c-event-carousel-item:hover {
+		filter: drop-shadow(0.25rem 0.25rem 1.25rem rgba(0, 0, 0, 0.5));
+	}
+
+	.c-event-carousel-item__media {
+		overflow: hidden;
+	}
+
+	.c-event-carousel-item__media::before {
+		padding-top: 30rem !important;
+	}
+
+	.c-event-carousel-item__media::after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		content: "";
+		background: linear-gradient(90deg, rgba(0, 0, 0, 0.91) 9.9%, rgba(0, 0, 0, 0.21) 100%);
+	}
+
+	.c-event-carousel-item__body {
+		position: absolute;
+		z-index: 1;
+		justify-content: flex-end;
+		width: 100%;
+		height: 100%;
+		padding: 4rem 3.5rem;
+		margin-top: 0;
+	}
+
+	.c-event-carousel-item__container {
+
+		max-width: 33.5rem;
+	}
+}
+
+/* END: Event carousel item */
+
+/* START: Event carousel */
+.c-event-carousel__title {
+	margin-bottom: 2.5rem;
+	font-size: calc(1.325rem + 0.9vw);
+	text-align: center;
+}
+
+.c-event-carousel__swiper-container {
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+.c-event-carousel__swiper-slide {
+	width: 18rem;
+	height: auto;
+}
+
+.c-event-carousel__swiper-slide:not(:last-of-type) {
+	margin-right: 1rem;
+}
+
+.c-event-carousel__swiper-pagination {
+	position: static;
+	top: auto;
+	bottom: auto !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.c-event-carousel__swiper-pagination .swiper-pagination-bullet {
+	width: 0.5rem;
+	height: 0.5rem;
+	background-color: #c5b4aa;
+	border-radius: 0;
+	transform: rotate(45deg);
+	opacity: 1;
+	transition: background-color .15s ease-in-out;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets.c-event-carousel__swiper-pagination .swiper-pagination-bullet {
+	margin: 0 0.75rem;
+}
+
+.c-event-carousel__swiper-pagination .swiper-pagination-bullet-active {
+	background-color: #d8484c;
+}
+
+@media (min-width: 48em) {
+	.c-event-carousel__swiper-container {
+		padding-right: calc((100vw - 45rem) / 2 + 1rem);
+    	padding-left: calc((100vw - 45rem) / 2 + 1rem);
+	}
+}
+
+@media (min-width: 62em) {
+	.c-event-carousel__swiper-container {
+		padding-top: 5rem;
+		padding-right: calc((100vw - 60rem) / 2 + 1rem);
+		padding-bottom: 5rem;
+    	padding-left: calc((100vw - 60rem) / 2 + 1rem);
+		margin: -5rem 0;
+	}
+
+	.c-event-carousel__swiper-slide {
+		width: 57rem;
+	}
+
+	.c-event-carousel__swiper-slide:not(:last-of-type) {
+		margin-right: 2.5rem;
+	}
+
+	.c-event-carousel__swiper-pagination {
+		margin-top: 1.75rem;
+	}
+}
+
+@media (min-width: 75em) {
+	.c-event-carousel__title {
+		margin-bottom: 3.75rem;
+		font-size: 2rem;
+	}
+
+	.c-event-carousel__swiper-container {
+		padding-right: calc((100vw - 72rem) / 2 + 1rem);
+    	padding-left: calc((100vw - 72rem) / 2 + 1rem);
+	}
+
+	.c-event-carousel__swiper-slide {
+		width: 67rem;
+	}
+}
+
+/* END: Event carousel */

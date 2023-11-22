@@ -1,0 +1,51 @@
+/* START: Event detail */
+.c-event-detail__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 2.5rem;
+	padding-bottom: 3.75rem;
+}
+
+.c-event-detail__media {
+	max-width: 17.5rem;
+	overflow: hidden;
+	background-color: #ebebeb;
+	border-radius: 0.25rem;
+}
+
+.c-event-detail__img {
+	object-fit: cover;
+}
+
+.c-event-detail__header {
+	margin-top: 2.5rem;
+}
+
+.c-event-detail-header {
+	text-align: center;
+}
+
+.c-event-detail-header__desc {
+	margin-bottom: 0;
+}
+
+@media (min-width: 48em) {
+	.c-event-detail__container {
+		padding-top: 0;
+		padding-bottom: 5rem;
+	}
+
+	.c-event-detail__media {
+		max-width: 25rem;
+	}
+
+}
+
+@media (min-width: 62em) {
+	.c-event-detail__container {
+		max-width: 60rem;
+	}
+}
+
+/* END: Event detail */

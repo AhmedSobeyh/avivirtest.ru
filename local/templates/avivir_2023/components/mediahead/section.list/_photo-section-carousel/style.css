@@ -1,0 +1,98 @@
+/** START: Poetry section item */
+.c-poetry-section-item {
+	position: relative;
+}
+
+.c-poetry-section-item__body {
+	padding-top: 1rem;
+}
+
+.c-poetry-section-item__title {
+	font-size: 1.25rem;
+	font-weight: 700;
+	letter-spacing: 0.01em;
+	color: #123a54;
+}
+
+.c-poetry-section-item__link {
+	text-decoration: none;
+	color: #123a54;
+}
+
+.c-poetry-section-item__link:hover {
+	color: #123a54;
+}
+
+.c-poetry-section-item__date {
+	margin-top: 0.5rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0.01em;
+	color: #123a54;
+}
+
+/** END: Poetry section item */
+
+/** START: Poetry section carousel */
+.c-photo-section-carousel__title {
+	margin-bottom: 0;
+	font-size: calc(1.325rem + 0.9vw);
+	text-align: center;
+}
+
+.c-photo-section-carousel__divider {
+	margin-bottom: 3rem;
+}
+
+.c-photo-section-carousel__container {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+
+.c-photo-section-carousel__swiper-container {
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+.c-photo-section-carousel__swiper-slide {
+	width: 13.75rem;
+	margin-right: 2rem;
+}
+
+.c-photo-section-carousel__swiper-slide:last-of-type {
+	margin-right: 0;
+}
+
+@media (min-width: 48em) {
+	.c-photo-section-carousel__swiper-container {
+		padding-right: calc((100vw - 45rem) / 2 + 1rem);
+		padding-left: calc((100vw - 45rem) / 2 + 1rem);
+	}
+}
+
+@media (min-width: 62em) {
+	.c-photo-section-carousel__swiper-container {
+		padding-right: calc((100vw - 60rem) / 2 + 1rem);
+		padding-left: calc((100vw - 60rem) / 2 + 1rem);
+	}
+}
+
+@media (min-width: 75em) {
+	.c-photo-section-carousel__title {
+		font-size: 2rem;
+	}
+
+	.c-photo-section-carousel__container {
+		max-width: 72rem;
+		padding-right: 1rem !important;
+		padding-left: 1rem !important;
+	}
+
+	.c-photo-section-carousel__swiper-container {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+/** START: Poetry section carousel */

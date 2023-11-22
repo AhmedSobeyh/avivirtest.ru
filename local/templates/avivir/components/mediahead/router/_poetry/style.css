@@ -1,0 +1,130 @@
+/** START: Poetry list page poetry collection carousel */
+.c-poetry-list-page-poetry-section-carousel {
+	background-color: #ebebeb;
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+}
+
+.c-poetry-list-page-poetry-section-carousel__container {
+	margin-top: -7.5rem;
+}
+
+@media (min-width: 48em) {
+	.c-poetry-list-page-poetry-section-carousel {
+		padding-top: 0;
+		padding-bottom: 5rem;
+	}
+
+	.c-poetry-list-page-poetry-section-carousel__container {
+		margin-top: -11.75rem;
+	}
+}
+
+/** END: Poetry list page poetry collection carousel */
+
+/** START: Poetry collection page description */
+.c-poetry-section-page-description {
+	position: relative;
+	padding-top: 2.5rem;
+}
+
+.c-poetry-section-page-description__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 60rem;
+}
+
+.c-poetry-section-page-description__media {
+	padding-bottom: 4rem;
+}
+
+.c-poetry-section-page-description__img {
+	width: 16.25rem;
+	height: 22rem;
+	background-color: #f2f2f2;
+}
+
+.c-poetry-section-page-description__title {
+	text-align: center;
+}
+
+.c-poetry-section-page-description__text {
+	text-align: center;
+}
+
+@media (min-width: 48em) {
+	.c-poetry-section-page-description {
+		padding-top: 0;
+	}
+}
+
+/** END: Poetry collection page description */
+
+/** START: Poetry collection page */
+.c-poetry-section-page {
+	position: relative;
+	margin-top: -7.5rem;
+}
+
+.c-poetry-section-page__poetry-section-carousel {
+	padding-top: 2.5rem;
+	padding-bottom: 3.75rem;
+}
+
+@media (min-width: 48em) {
+	.c-poetry-section-page {
+		margin-top: -11.75rem;
+	}
+
+	.c-poetry-section-page__poetry-section-carousel {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+}
+
+/** END: Poetry collection page */
+
+/** START: Poetry detail page */
+.c-poetry-detail-page {
+	background-color: #ebebeb;
+}
+
+.c-poetry-detail-page__container {
+	position: relative;
+	margin-top: -7.5rem;
+}
+
+.c-poetry-detail-page__poetry-list {
+	display: flex;
+    flex-direction: column;
+	padding-top: 2.5rem;
+	padding-bottom: 3.75rem;
+}
+
+.c-poetry-detail-page-poetry-list__footer {
+	display: flex;
+	flex-direction: column;
+}
+
+@media (min-width: 48em) {
+	.c-poetry-detail-page__container {
+		margin-top: -16.75rem;
+	}
+
+	.c-poetry-detail-page__poetry-list {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+
+	.c-poetry-detail-page-poetry-list__footer {
+		align-items: center;
+	}
+
+	.c-poetry-detail-page__delimeter {
+		margin-top: 3.75rem;
+		margin-bottom: 3.75rem;
+	}
+}
+
+/** END: Poetry detail page */

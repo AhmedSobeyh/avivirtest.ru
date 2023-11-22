@@ -1,0 +1,437 @@
+// START: Convert to unit utility
+function convertToUnit(str, unit = "rem") {
+	if (str == null || str === "") {
+		return undefined;
+	} else if (isNaN(str)) {
+		return String(str);
+	} else {
+		if (unit === "rem") {
+			return `${Number(str) / 16}${unit}`;
+		} else {
+			return `${Number(str)}${unit}`;
+		}
+	}
+}
+// END: Convert to unit utility
+
+// START: Get siblings utility
+function getSiblings(elem) {
+	var siblings = [];
+	var sibling = elem;
+	while (sibling.previousSibling) {
+		sibling = sibling.previousSibling;
+		sibling.nodeType == 1 && siblings.push(sibling);
+	}
+
+	sibling = elem;
+	while (sibling.nextSibling) {
+		sibling = sibling.nextSibling;
+		sibling.nodeType == 1 && siblings.push(sibling);
+	}
+
+	return siblings;
+}
+// END: Get siblings utility
+
+// START: Carousel
+//
+// Constants
+const CAROUSEL_NAMESPACE = {
+	containerModifierClass: "c-carousel--",
+	noSwipingClass: "c-carousel--no-swiping",
+	slideActiveClass: "c-carousel__item--active",
+	slideBlankClass: "c-carousel__item--invisible-blank",
+	slideClass: "c-carousel__item",
+	slideDuplicateActiveClass: "c-carousel__item--duplicate-active",
+	slideDuplicateClass: "c-carousel__item--duplicate",
+	slideDuplicateNextClass: "c-carousel__item--duplicate-next",
+	slideDuplicatePrevClass: "c-carousel__item--duplicate-prev",
+	slideNextClass: "c-carousel__item--next",
+	slidePrevClass: "c-carousel__item--prev",
+	slideVisibleClass: "c-carousel__item--visible",
+	wrapperClass: "c-carousel__inner",
+};
+
+const CAROUSEL_NAVIGATION_NAMESPACE = {
+	disabledClass: "c-carousel__button--disabled",
+	hiddenClass: "c-carousel__button--hidden",
+	lockClass: "c-carousel__button--lock",
+};
+
+const CAROUSEL_PAGINATION_NAMESPACE = {
+	bulletActiveClass: "c-carousel-pagination__bullet--active",
+	bulletClass: "c-carousel-pagination__bullet",
+	clickableClass: "c-carousel-pagination--clickable",
+	currentClass: "c-carousel-pagination__current",
+	hiddenClass: "c-carousel-pagination--hidden",
+	lockClass: "c-carousel-pagination--lock",
+	modifierClass: "c-carousel-pagination--",
+	totalClass: "c-carousel-pagination__total",
+	progressbarFillClass: "c-carousel-pagination__progressbar-fill",
+	progressbarOppositeClass: "c-carousel-pagination--progressbar-opposite",
+};
+
+const CAROUSEL_SCROLLBAR_NAMESPACE = {
+	dragClass: "c-carousel-scrollbar__drag",
+	lockClass: "c-carousel-scrollbar--lock",
+};
+
+const CAROUSEL_LAZY_NAMESPACE = {
+	elementClass: "c-carousel-lazy",
+	loadedClass: "c-carousel-lazy--loaded",
+	loadingClass: "c-carousel-lazy--loading",
+	preloaderClass: "c-carousel-lazy__preloader",
+};
+
+const CAROUSEL_THUMB_NAMESPACE = {
+	slideThumbActiveClass: "c-carousel__item--thumb-active",
+	thumbsContainerClass: "c-carousel--thumbs",
+};
+
+const CAROUSEL_ZOOM_NAMESPACE = {
+	containerClass: "c-carousel__zoom-container",
+	zoomedSlideClass: "c-carousel__item--zoomed",
+};
+
+const CAROUSEL_ACCESSIBILITY_NAMESPACE = {
+	notificationClass: "c-carousel__notification",
+};
+// END: Carousel
+
+// Partner list carousel
+
+let partnerListCarouselSelector = ".js-partner-list-carousel";
+
+let partnerListCarouselConfig = {
+	allowTouchMove: false,
+	autoplay: {
+		delay: 0,
+		disableOnInteraction: false,
+	},
+	freeMode: true,
+	freeModeMomentum: false,
+	loop: true,
+	loopedSlides: 7,
+	slidesPerView: "auto",
+	speed: 4000,
+	...CAROUSEL_NAMESPACE,
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+	if (
+		typeof partnerListCarouselSelector !== "undefined" &&
+		partnerListCarouselSelector !== null
+	) {
+		let partnerListCarousel = new Swiper(
+			partnerListCarouselSelector,
+			partnerListCarouselConfig
+		);
+	}
+});
+
+// START: Project list carousel carousel
+document.addEventListener("DOMContentLoaded", function () {
+	var projectListCarouselSelector = document.querySelector(
+		"#projectListCarousel"
+	);
+
+	if (
+		typeof projectListCarouselSelector != "undefined" &&
+		projectListCarouselSelector != null
+	) {
+		var projectListCarousel = new Swiper(
+			"#" + projectListCarouselSelector.id,
+			{
+				centeredSlides: true,
+				effect: "fade",
+				navigation: {
+					nextEl: "#projectListCarousel .c-carousel-btn--next",
+					prevEl: "#projectListCarousel .c-carousel-btn--prev",
+					...CAROUSEL_NAVIGATION_NAMESPACE,
+				},
+				pagination: {
+					el: "#projectListCarousel .c-carousel-pagination",
+					type: "fraction",
+					...CAROUSEL_PAGINATION_NAMESPACE,
+				},
+				...CAROUSEL_NAMESPACE,
+			}
+		);
+	}
+});
+// END: Project list carousel carousel
+
+// START: Photo gallery carousel
+document.addEventListener("DOMContentLoaded", function () {
+	var photoGalleryCarouselSelector = document.querySelector(
+		"#photoGalleryCarousel"
+	);
+
+	if (
+		typeof photoGalleryCarouselSelector != "undefined" &&
+		photoGalleryCarouselSelector != null
+	) {
+		var photoGalleryCarousel = new Swiper(
+			"#" + photoGalleryCarouselSelector.id,
+			{
+				centeredSlides: true,
+				effect: "fade",
+				navigation: {
+					nextEl: "#photoGalleryCarousel .c-carousel-btn--next",
+					prevEl: "#photoGalleryCarousel .c-carousel-btn--prev",
+					...CAROUSEL_NAVIGATION_NAMESPACE,
+				},
+				pagination: {
+					el: "#photoGalleryCarousel .c-carousel-pagination",
+					type: "fraction",
+					...CAROUSEL_PAGINATION_NAMESPACE,
+				},
+				...CAROUSEL_NAMESPACE,
+			}
+		);
+	}
+});
+// END: Photo gallery carousel
+
+// START: Collapse
+//
+// Constants
+/* const COLLAPSE_CLASS_NAME_SHOW = "is-shown";
+const COLLAPSE_CLASS_NAME_TRANSITION = "c-collapse--transition";
+const COLLAPSE_DATA_TOGGLE = '[data-exo-toggle="collapse"]';
+const COLLAPSE_TRIGGER_CLASS_NAME_ACTIVE = "is-active";
+
+// Toggle collapse
+// relatedTarget - это элемент collapse, который получаем из data атрибута trigger
+function toggleCollapse(relatedTarget, trigger, forcedDimension) {
+	if (relatedTarget.classList.contains(COLLAPSE_CLASS_NAME_SHOW)) {
+		hideCollapse(relatedTarget, trigger);
+	} else {
+		showCollapse(relatedTarget, trigger, forcedDimension);
+	}
+}
+
+// Show collapse
+// relatedTarget - это элемент collapse, который получаем из data атрибута trigger
+function showCollapse(relatedTarget, trigger, forcedDimension) {
+	if (
+		relatedTarget.classList.contains(COLLAPSE_CLASS_NAME_TRANSITION) ||
+		relatedTarget.classList.contains(COLLAPSE_CLASS_NAME_SHOW)
+	) {
+		return;
+	}
+
+	function shown() {
+		// Удаляем класс по окончанию анимации
+		relatedTarget.classList.remove(COLLAPSE_CLASS_NAME_TRANSITION);
+		// Добавляем класс по окончанию анимации
+		relatedTarget.classList.add(COLLAPSE_CLASS_NAME_SHOW);
+
+		if (
+			forcedDimension == null &&
+			forcedDimension == undefined &&
+			forcedDimension == ""
+		) {
+			relatedTarget.style.height = null;
+		}
+
+		relatedTarget.removeEventListener("transitionend", shown, false);
+	}
+
+	relatedTarget.addEventListener("transitionend", shown, false);
+
+	relatedTarget.style.display = null;
+
+	let computedHeight;
+
+	if (
+		forcedDimension !== null &&
+		forcedDimension !== undefined &&
+		forcedDimension !== ""
+	) {
+		computedHeight = forcedDimension;
+	} else {
+		computedHeight = relatedTarget.scrollHeight;
+	}
+
+	// Добавляем класс для начала анимации
+	relatedTarget.classList.add(COLLAPSE_CLASS_NAME_TRANSITION);
+
+	setTimeout(() => {
+		relatedTarget.style.height = convertToUnit(computedHeight);
+	}, 5);
+
+	if (typeof trigger !== "undefined" && trigger !== null) {
+		trigger.classList.add(COLLAPSE_TRIGGER_CLASS_NAME_ACTIVE);
+		// Меняем значение ариа-роли для доступности
+		trigger.setAttribute("aria-expanded", "true");
+	}
+}
+
+// Hide collapse
+// relatedTarget - это элемент collapse, который получаем из data атрибута trigger
+function hideCollapse(relatedTarget, trigger, forcedDimension) {
+	if (
+		relatedTarget.classList.contains(COLLAPSE_CLASS_NAME_TRANSITION) ||
+		!relatedTarget.classList.contains(COLLAPSE_CLASS_NAME_SHOW)
+	) {
+		return;
+	}
+
+	function hidden() {
+		// Удаляем класс по окончанию анимации
+		relatedTarget.classList.remove(COLLAPSE_CLASS_NAME_TRANSITION);
+
+		relatedTarget.style.display = "none";
+
+		relatedTarget.removeEventListener("transitionend", hidden, false);
+	}
+
+	relatedTarget.addEventListener("transitionend", hidden, false);
+
+	let computedHeight;
+
+	if (
+		forcedDimension == null &&
+		forcedDimension == undefined &&
+		forcedDimension == ""
+	) {
+		computedHeight = relatedTarget.scrollHeight;
+	}
+
+	relatedTarget.style.height = convertToUnit(computedHeight);
+
+	// Добавляем класс для начала анимации
+	relatedTarget.classList.add(COLLAPSE_CLASS_NAME_TRANSITION);
+
+	setTimeout(() => {
+		// Удаляем класс до начала анимации
+		relatedTarget.classList.remove(COLLAPSE_CLASS_NAME_SHOW);
+
+		relatedTarget.style.height = null;
+	}, 5);
+
+	if (typeof trigger !== "undefined" && trigger !== null) {
+		trigger.classList.remove(COLLAPSE_TRIGGER_CLASS_NAME_ACTIVE);
+		// Меняем значение ариа-роли для доступности
+		trigger.setAttribute("aria-expanded", "false");
+	}
+}
+
+// Init collapse
+function initCollapse() {
+	// Collapse trigger list
+	// Список элементов которые могут открыть collapse
+	let collapseTriggerList = document.querySelectorAll(COLLAPSE_DATA_TOGGLE);
+
+	// Перебираем триггеры collapse
+	collapseTriggerList.forEach((trigger) => {
+		// Таргетимся на соответствующий элемент по id, который получаем из атрибута data-exo-target
+		let element = document.querySelector(trigger.dataset.exoTarget);
+		// Получаем значение атрибута data-exo-forced-height
+		let forcedDimension = element.dataset.exoforcedDimension;
+
+		// Переключим состояние по клику
+		trigger.addEventListener("click", function (event) {
+			// Отключим все базовые функции на всякий случай
+			event.preventDefault();
+
+			toggleCollapse(element, trigger, forcedDimension);
+		});
+	});
+}
+
+document.addEventListener("DOMContentLoaded", initCollapse); */
+// END: Collapse
+
+// START: Masonry news list
+document.addEventListener("DOMContentLoaded", function () {
+	const masonryNewsListElement = document.querySelector(
+		".js-masonry-news-list"
+	);
+
+	if (
+		masonryNewsListElement !== undefined &&
+		masonryNewsListElement !== null
+	) {
+		const masonryNewsList = new Masonry(masonryNewsListElement, {
+			itemSelector: ".js-masonry-news-list-item",
+		});
+	}
+});
+// END: Masonry news list
+
+// Переключение табов выпадающего меню
+const appBarSecondaryNav = (function appBarSecondaryNav() {
+	const app = {};
+
+	// Получение соседних элементов
+	function getSiblings(elem) {
+		// Создаём массив соседних элементов и получаем первый соседний элемент
+		const siblings = [];
+		let sibling = elem.parentNode.firstChild;
+
+		// Перебираем каждый соседний элемент и добавляем их в массив
+		while (sibling) {
+			if (sibling.nodeType === 1 && sibling !== elem) {
+				siblings.push(sibling);
+			}
+			sibling = sibling.nextSibling;
+		}
+
+		return siblings;
+	}
+
+	// Переключение табов с категориями меню по hover (Классические табы, но не по click, а по hover)
+	function handlerappBarSecondaryNav() {
+		// Создаём массив из всех подходящих нам управляющих элементов
+		const toggleList = Array.from(
+			document.querySelectorAll('[data-exo-toggle="appBarSecondaryNav"]')
+		);
+
+		if (toggleList.length > 0) {
+			for (let i = 0; i < toggleList.length; i += 1) {
+				const element = toggleList[i]; // Элемент на который наводим курсор
+				const parent = element.parentNode; // Родитель элемента
+				const elementTarget = document.querySelector(
+					element.getAttribute("data-exo-target")
+				); // Целевой элемент (таб) на котором нужно переключить класс
+
+				// При наведении на элемент получаем соседей родителя
+				element.onmouseover = function elemOnMouseOver() {
+					const parentSiblings = getSiblings(parent);
+
+					// console.log(parentSiblings);
+
+					for (let x = 0; x < parentSiblings.length; x += 1) {
+						const sibling = parentSiblings[x];
+						const siblingChild = sibling.querySelector(
+							'[data-exo-toggle="appBarSecondaryNav"]'
+						);
+
+						if (sibling.classList.contains("is-active")) {
+							sibling.classList.remove("is-active");
+							const siblingChildTarget = document.querySelector(
+								siblingChild.getAttribute("data-exo-target")
+							);
+							siblingChildTarget.classList.remove("is-active");
+						}
+					}
+
+					parent.classList.add("is-active");
+					elementTarget.classList.add("is-active");
+				};
+			}
+		}
+	}
+
+	app.init = function init() {
+		handlerappBarSecondaryNav();
+	};
+
+	return app;
+})();
+
+document.addEventListener("DOMContentLoaded", function () {
+	appBarSecondaryNav.init();
+});

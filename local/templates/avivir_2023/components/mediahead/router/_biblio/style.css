@@ -1,0 +1,346 @@
+/* START: Biblio list page biblio about */
+.c-biblio-about {
+	position: relative;
+	color: #bdbdbd;
+	background: linear-gradient(313.47deg, #333333 6.44%, #3A3434 22.04%, #3F3434 33.52%, #393434 47%, #333333 60.91%);;
+}
+
+.c-biblio-about__container {
+	position: relative;
+	display: grid;
+	column-gap: 3.75rem;
+	row-gap: 1rem;
+	margin-top: -5rem;
+}
+
+.c-biblio-about__close {
+	position: absolute;
+	top: 1.25rem;
+	right: 1.5rem;
+	color: #c5b4aa;
+	transition: visibility .15s ease-in-out, opacity .15s ease-in-out;
+}
+
+.c-biblio-about__close:not(.is-shown) {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.c-biblio-about__body {
+	padding-bottom: 2rem;
+}
+
+.c-biblio-about__title {
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.375;
+	letter-spacing: 0.01em;
+}
+
+.c-biblio-about__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+    object-fit: contain;
+    max-height: 17.5rem;
+}
+
+.c-biblio-about__text {
+	margin-bottom: 1rem;
+}
+
+.c-biblio-about-btn {
+	color: #bdbdbd;
+	background-color: transparent;
+	border-color: #bdbdbd;
+}
+
+.c-biblio-about-btn:hover {
+	color: #081a26;
+	background-color: #e5e5e5;
+	border-color: #bdbdbd;
+}
+
+.c-biblio-about-btn:focus {
+	color: #081a26;
+	background-color: #f2f2f2;
+	border-color: #e5e5e5;
+	box-shadow: 0 0 0 0.1rem rgba(189, 189, 189, 0.5);
+}
+
+.c-biblio-about-btn:active,
+.c-biblio-about-btn.is-active {
+	color: #081a26;
+	background-color: #f2f2f2;
+	border-color: #e5e5e5;
+}
+
+.c-biblio-about-btn:active:focus,
+.c-biblio-about-btn.is-active:focus {
+	box-shadow: 0 0 0 0.1rem rgba(189, 189, 189, 0.5);
+}
+
+.c-biblio-about-btn:disabled,
+.c-biblio-about-btn.is-disabled {
+	color: #bdbdbd;
+	background-color: transparent;
+	border-color: #bdbdbd;
+}
+
+.c-biblio-about__btn > .c-btn__icon {
+	font-size: 0.75rem;
+}
+
+.s-biblio-about-text p {
+
+}
+
+.s-biblio-about-text p:last-of-type {
+	margin-bottom: 0;
+}
+
+.s-biblio-about-text:not(.is-shown) > * {
+    display: none;
+}
+
+@media (min-width: 48em) {
+	.c-biblio-about__container {
+		grid-template-columns: minmax(20rem, 3fr) 5fr;
+		margin-top: -11.75rem;
+	}
+
+	.c-biblio-about__close {
+		display: none;
+	}
+
+	.c-biblio-about__body {
+		grid-column: 2;
+		padding-top: 3.75rem;
+		padding-bottom: 5rem;
+	}
+
+	.c-biblio-about__img {
+		max-height: 21.625rem;
+	}
+
+	.s-biblio-about-text:not(.is-shown) > *:first-child {
+		display: -webkit-box;
+		margin-bottom: 0;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 4;
+		overflow: hidden;
+	}
+
+	.s-biblio-about-text:not(.is-shown) > *:not(:first-child) {
+		display: none;
+	}
+}
+
+/* END: Biblio list page biblio about */
+
+/* START: Biblio list page */
+.c-biblio-list-page {
+	background-color: #f2f2f2;
+}
+
+.c-biblio-list-page__biblio-list {
+	padding-top: 2.5rem;
+	padding-bottom: 3.75rem;
+}
+
+@media (min-width: 48em) {
+	.c-biblio-list-page__biblio-list {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+}
+
+/* END: Biblio list page */
+
+/* START: Biblio section page */
+.c-biblio-section-page {
+	position: relative;
+	margin-top: -5rem;
+	background-color: #ebebeb;
+}
+
+.c-biblio-section-page__biblio-list {
+	padding-top: 2.5rem;
+	padding-bottom: 3.75rem;
+}
+
+@media (min-width: 48em) {
+	.c-biblio-section-page {
+		margin-top: -11.75rem;
+	}
+
+	.c-biblio-section-page__biblio-list {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+}
+
+/* END: Biblio section page */
+
+/* START: Biblio detail page */
+.c-biblio-detail-page {
+	/* position: relative; */
+	background-color: #ebebeb;
+    margin-top: -7.5rem;
+}
+
+.c-biblio-detail-page__container {
+	padding-top: 2.5rem;
+	padding-bottom: 3.75rem;
+}
+
+.c-biblio-detail-page__biblio-list {
+	padding-top: 3.75rem;
+	padding-bottom: 3.75rem;
+	background-color: #ebebeb;
+}
+
+@media (min-width: 48em) {
+	.c-biblio-detail-page {
+		margin-top: -16.75rem;
+	}
+
+	.c-biblio-detail-page__container {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+
+	.c-biblio-detail-page__biblio-list  {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+}
+
+@media (min-width: 62em) {
+	.c-biblio-detail-page__container {
+		max-width: 60rem;
+	}
+}
+
+/* END: Biblio detail page */
+
+
+
+
+/* ! Перенос в компонент */
+/* START: Biblio section navbar nav */
+.c-section-navbar-nav {
+	display: flex;
+    flex-wrap: nowrap;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    margin-bottom: 0;
+    list-style: none;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.c-section-navbar-nav__item:last-of-type {
+    padding-right: 1rem;
+}
+
+.c-section-navbar-nav__link {
+	display: flex;
+	align-items: center;
+	padding-top: 1rem;
+	padding-right: 0.5rem;
+	padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    font-size: 1rem;
+	line-height: 1;
+	letter-spacing: 0.01em;
+    text-decoration: none;
+    color: #123a54;
+    transition: color .15s ease-in-out;
+}
+
+.c-section-navbar-nav__link::before {
+	display: inline-block;
+	width: 0.5rem;
+	height: 0.5rem;
+	margin-right: 0.5rem;
+	content: '';
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 4L4 0L8 4L4 8L0 4Z' fill='%23C5B4AA'/%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 0.5rem 0.5rem;
+}
+
+.c-section-navbar-nav__link:hover,
+.c-section-navbar-nav__link:focus,
+.c-section-navbar-nav__link.is-active {
+	color: #d8484c;
+}
+
+.c-section-navbar-nav__link.is-disabled {
+	color: rgba(216, 72, 76, .5);
+}
+/* END: Biblio section navbar nav */
+
+/* START: Biblio section navbar */
+.c-section-navbar {
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    background-color: #fff;
+}
+
+.c-section-navbar__container {
+	padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.c-section-navbar__scroller {
+	position: relative;
+    z-index: 2;
+    height: 3rem;
+    overflow-y: hidden;
+}
+
+.c-section-navbar__scroller::before,
+.c-section-navbar__scroller::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2rem;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 2;
+    border-radius: 4px;
+}
+
+.c-section-navbar__scroller::before {
+    right: auto;
+    left: 0;
+    background: linear-gradient(90deg, #fff 20%, rgba(255, 255, 255, 0.7) 48%, rgba(255, 255, 255, 0) 64%);
+}
+
+.c-section-navbar__scroller::after {
+    right: 0;
+    left: auto;
+    background: linear-gradient(270deg, #fff 20%, rgba(255, 255, 255, 0.7) 48%, rgba(255, 255, 255, 0) 64%);
+}
+
+@media (min-width: 62em) {
+	.c-section-navbar__nav {
+		justify-content: center;
+	}
+}
+
+/* END: Biblio section navbar */

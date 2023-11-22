@@ -1,0 +1,182 @@
+<?
+	$startdate = $_POST['startdate'];
+	$enddate = $_POST['enddate'];
+	
+	
+	ini_set('error_reporting', E_ALL);
+	ini_set('display_errors', 0);
+	ini_set('display_startup_errors', 0);
+	
+	$host = 'localhost'; 
+	$user = 'uglybambr_covid';    
+	$pass = 'Papazolsd3'; 
+	$db_name = 'uglybambr_covid';  
+	$link = mysqli_connect($host, $user, $pass, $db_name); 
+	
+	
+	if (!$link) {
+		echo 'Не могу соединиться с БД. Код ошибки: ' . mysqli_connect_errno() . ', ошибка: ' . mysqli_connect_error();
+		exit;
+	}
+	
+	
+	
+	$sql = mysqli_query($link, 'SELECT `date`, `time`, `gender`, `age`, `height`, `weight`, `exercise`, `liver`, `pressure`, `diabet`, `heart`, `smoking` FROM `covid` 
+	WHERE
+	(date BETWEEN "'.$startdate.'" AND "'.$enddate.'")' );
+	
+	$inncounter = mysqli_num_rows($sql) - 10;
+	$inn = 0;
+	echo ('<br><br><div class="counter">Количество запросов теста: '.$inncounter.'</div><br><br>');
+	
+	
+	
+	$smoking = 0;
+	$heart = 0;
+	$diabet = 0;
+	$pressure = 0;
+	$liver = 0;
+	$exercise1 = 0;
+	$exercise2 = 0;
+	$exercise3 = 0;
+	$weight = 0;
+	$height = 0;
+	$age = 0;
+	$man = 0;
+	$woman = 0;
+	$illchance = 0;
+	$illarray = array_fill(1, 33, '0');
+	$illcounter = 0;
+	
+	echo ('<table class="reporttable">');
+	echo ('<tr><th>Дата</th><th>Время</th><th>Пол</th><th>Возраст</th><th>Рост</th><th>Вес</th><th>Упражнения</th><th>Печень</th><th>Давление</th><th>Диабет</th><th>Сердце</th><th>Курение</th></tr>');
+	while ($result = mysqli_fetch_array($sql)) {
+	
+		switch($result['age']) {
+			case '20':  
+			$illchance = 5;
+			break;			
+			case '30':  
+			$illchance = 7;
+			break;		
+			case '40':  
+			$illchance = 9;
+			break;
+			case '50':  
+			$illchance = 12;
+			break;
+			case '60': 
+			$illchance = 16;
+			break;
+			case '70':  
+			$illchance = 21;
+			break;
+			case '80': 
+			$illchance = 27;
+			break;
+		};
+		
+		if ($result['gender'] == 'male'){
+			$man++;
+			} else if ($result['gender'] == 'female'){
+			$woman++;
+			$illchance -= 2;
+		};
+		
+		
+		$result['age'] < 40 ? $weightindex = $result['height']-110 : $weightindex = $result['height']-100;
+		
+		
+		if ($result['weight'] < ($weightindex-20) || $result['weight'] > ($weightindex + 20)){
+			$illchance += 1;
+		};
+		
+		switch ($result['exercise']){
+			case '1':
+			$illchance;
+			break;
+			case '2':
+			$illchance -= 1;
+			break;
+			case '3':
+			$illchance -= 2;
+			break;
+		};			
+		
+		if ($result['exercise'] == 1){
+			$exercise1++;
+			} else if ($result['exercise'] == 2){
+			$exercise2++;
+			} else if ($result['exercise'] == 3){
+			$exercise3++;
+		}
+		
+		
+		if ($result['liver'] == 1) {
+			$liver++;
+			$illchance++;
+		};
+		if ($result['pressure'] == 1) {
+			$pressure++;
+			$illchance++;
+		};		
+		if ($result['diabet'] == 1) {
+			$diabet++;
+			$illchance++;
+		};
+		if ($result['heart'] == 1) {
+			$heart++;
+			$illchance++;
+		};
+		if ($result['smoking'] == 1) {
+			$smoking++;
+			$illchance++;
+		};
+		
+		$illarray[$illchance+1] = ($illarray[$illchance+1]) + 1;
+	
+	
+	$inn++;
+	if ($inn > $inncounter){
+		echo ('<tr><td>'.$result['date'].'</td>'.
+		'<td>'.$result['time'].'</td>'.
+		'<td>'.$result['gender'].'</td>'.
+		'<td>'.$result['age'].'</td>'.
+		'<td>'.$result['height'].'</td>'.
+		'<td>'.$result['weight'].'</td>'.
+		'<td>'.$result['exercise'].'</td>'.
+		'<td>'.$result['liver'].'</td>'.
+		'<td>'.$result['pressure'].'</td>'.
+		'<td>'.$result['diabet'].'</td>'.
+		'<td>'.$result['heart'].'</td>'.
+		'<td>'.$result['smoking'].'</td></tr>');
+	};	
+	}
+	echo ('</table>');
+	
+	
+	echo ('<div class="firstblock">');
+	echo ('Мужчины: '.$man.'<br>');
+	echo ('Женщины: '.$woman.'<br>');
+	echo ('<br><br><br>');
+	echo ('Не занимаются спортом: '.$exercise1.'<br>');
+	echo ('Спорт 1-4 раза в неделю: '.$exercise2.'<br>');
+	echo ('Спорт >5 раз в неделю: '.$exercise3.'<br>');
+	echo ('<br><br><br>');
+	echo ('Проблемы с печенью: '.$liver.'<br>');
+	echo ('Высокое давление: '.$pressure.'<br>');
+	echo ('Диабет: '.$diabet.'<br>');
+	echo ('Проблемы с сердцем: '.$heart.'<br>');
+	echo ('Курящих: '.$smoking);
+	echo ('<br><br><br>');
+	echo ('</div><div class="seconblock">');
+	echo ('<table class="reporttable">');
+	echo ('<tr><th>Вероятность в %</th><th>Количество</th></tr>');
+	for ($e = 1; $e < 34; $e++){
+		echo ('<tr><td>'.$e.'</td><td>'.$illarray[$e].'</td></tr>');
+	}
+	echo ('</table>');
+	echo ('</div>');
+	
+	
+?>

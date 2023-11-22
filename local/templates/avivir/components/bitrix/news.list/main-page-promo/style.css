@@ -1,0 +1,522 @@
+.c-parallax-scene {
+	position: relative;
+	display: block;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.c-parallax-scene__layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	will-change: transform;
+}
+
+.c-parallax-scene__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.c-parallax-scene-description {
+	position: absolute;
+	z-index: 10;
+	max-width: 25rem;
+	cursor: pointer;
+	/* opacity: 0;
+	visibility: hidden; */
+	filter: drop-shadow(0 2px 4px #000);
+	text-decoration: none;
+	transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+}
+
+@media (min-width: 75em) {
+	.c-parallax-scene-description {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+.c-parallax-scene-description__icon {
+	position: absolute;
+	right: 100%;
+	display: block;
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-right: 1.25rem;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23bf6b6b' d='M512,251.6c-6.3,3.8-16.1,6.8-23.1,12.1c0.2-4,0.6-8,0.6-12.1c0-23.6-3.4-46.2-9.5-67.8 c3.8,8.9,7.2,17.9,9.5,27.3c1.7,7,5.2,14.1,5.2,21.1c0,5.3,1.7,10.6,0,15.8c0,0,1.7,1.8,3.5,3.5c5.2-8.8,5.2-15.8,5.2-24.6 c0-7-3.5-14.1-1.7-22.9c1.7-10.6-1.7-17.6-3.5-26.4c-1.7-7-5.2-14.1-8.6-21.1c-1.7-7-6.9-12.3-10.4-19.4 c-5.2-8.8-10.4-19.4-20.8-26.4c-8.6-5.3-15.6-10.6-20.8-17.6c-6.9-7-12.1-12.3-17.3-19.4C403,58.1,384,42.2,363.2,31.7l-20.8-8.8 c-6.9-3.5-13.8-5.3-20.8-8.8C301,3.5,276.8,0,254.3,0c-10.4,0-19,3.5-29.4,5.3c-2.5,0.5-5.3,1.4-8,2.2 C140,17.3,74.5,63.7,37.5,129.1c-2.7-0.9-2.9,1.5-2.9,2.9c-2.7,5.5-5.4,12.2-8.2,19.1C20.6,164.2,16,178,12.6,192.2 c-0.2-2.4-0.5-4.8-0.5-7.5c0,5.3-1.7,12.3-3.5,17.6c0,7,0,12.3-1.7,19.4c0.1-0.2,0.2-0.3,0.3-0.5c-1.1,9.2-1.8,18.5-1.9,28 c0-0.4-0.1-0.8-0.1-1.2c-3.5,0-5.2,1.8-5.2,1.8c0,24.6,0,49.3,8.6,73.9c6.9,22.9,19,45.7,32.9,65.1c5.2,7,10.4,12.3,15.6,19.4 c5.2,7,10.4,12.3,15.6,19.4c5.2,5.3,10.4,14.1,15.6,21.1c5.2,7,12.1,14.1,19,19.4c29.4,21.1,64,26.4,96.9,38.7 c8.6,3.5,19,5.3,27.7,5.3c5.2,0,8.6,0,13.8,0c5.2,0,8.6-1.8,13.8-1.8c27.7-5.3,55.4-10.6,79.6-22.9c6.9-1.8,12.1-5.3,17.3-8.8 c6.9-3.5,12.1-7,17.3-10.6c13.8-7,24.2-15.8,38.1-22.9c6.9-3.5,13.8-8.8,19-14.1c5.2-7,12.1-12.3,17.3-17.6 c19-19.4,34.6-42.2,46.7-66.9c10.4-22.9,8.6-52.8,12.1-77.4C506.8,263.9,505.1,256.9,512,251.6z M21.6,340.2c-0.7-1.5-1.2-3-1.6-4.6 C20.5,337.2,21,338.7,21.6,340.2z M5.2,285c-1.7-5.3-1.7-10.6,0-17.6c0.4-0.8,0.4-1.5,0.7-2.3c1.1,20.4,4.4,40.3,10.1,59.1 c-2.9-7.2-6-13.9-7.3-21.6C8.6,297.3,6.9,290.3,5.2,285z M91.7,441.6c-0.2-0.6-0.3-1.3-0.5-1.9c5.9,5.1,12.1,9.9,18.5,14.4 C103.4,451.3,94.4,451.3,91.7,441.6z M131.5,471.5c-8.6,3.5-10.4-1.8-12.1-8.8c-1.7-1.8-3.5-3.5-5.2-5.3c-0.2-0.3-0.5-0.4-0.7-0.7 c7.9,5.3,16.1,10,24.6,14.4C136.1,470.4,134,470.2,131.5,471.5z M138.2,471.3c5.9,3,11.9,5.9,18.1,8.5c-3.1-0.9-6.3-1.8-9.2-2.9 C143.8,475.7,141.3,472.7,138.2,471.3z M250.8,499.7c-8.6,0-15.6,0-24.2,0c-8.6-1.8-17.3-3.5-24.2-5.3c-1.5-0.6-3.1-1.1-4.7-1.7 c16,3.4,32.6,5.2,49.6,5.2c5.1,0,10.1-0.5,15.1-0.8C258.7,498,255,498.8,250.8,499.7z M479.1,360.7c-6.9,8.8-15.6,17.6-22.5,26.4 c-10.3,15.1-23.6,27-37.5,38c34.7-35.6,58.6-81.9,66.9-133.6c0,0.6,0,1.2,0,2.3c3.5,12.3-1.7,22.9,1.7,35.2 C491.2,341.3,484.3,351.9,479.1,360.7z' /%3E%3Cpath fill='%23f2f2f2' d='M425.2,240.8c-1.2,3.7,0,4.9,1.2,6.1c2.4,4.9,1.2,10.9-1.3,15.8l-1.2,1.2c-2.4,0-3.7,1.2-6.1,1.2 c-2.4,0-4.9,0-8.5,1.2c-2.4,0-4.9,0-6.1,1.2c-2.4,0-3.6,1.2-6.1,1.2c-2.4,0-4.9,0-7.3,0l-1.2,1.2c-2.4,0-4.9,0-6.1-1.2 c-1.2-1.2-3.6-1.2-4.9,0c0,0,0,0,1.2,1.2c-1.2,1.2-2.4,0-3.7,1.2c0,0-1.2,1.2-2.4-2.4c-4.9,0-9.7-2.4-14.6,0c0,0-1.2,1.2-2.4,0 c0,0,0,0-1.2,1.2c-1.2,1.2-3.7,1.2-4.9,0c0,0,0,0-1.2-1.2c-4.9,0-10.9-1.2-15.8-1.2c-1.2-1.2-2.4,0-3.6,1.2c0,2.4,2.4,0,1.2,1.2 c-2.4,0-4.9,2.4-8.5,1.2c0-2.4,0-2.4-1.2-3.6c-2.4,0-6.1-1.2-9.7,0c0,0-1.2-1.2-2.4,0c-3.6-3.6-9.7-2.4-15.8-3.6c0,0-2.4,0-3.6-1.2 c-6.1,1.2-10.9,1.3-15.8,1.3c-1.2,1.2-3.6,1.2-4.9,0c-1.2,1.2,1.2,1.2,0,2.4l-1.2-1.2c-2.4-2.4-4.9,0-6.1-1.2 c-2.4,0-3.6,1.2-6.1,1.2c-1.2,1.2-1.2-1.2-3.6-1.2c-3.7,3.7-9.7,0-14.6,0c-6.1,1.2-10.9-1.2-17,0.1c-4.9,0-8.5-1.2-10.9-1.2 c-4.9,0-9.7,0-14.6-2.4c-2.4,0-6.1,1.2-8.5,1.2c-2.4,0-6.1-1.2-8.5-1.2c-3.6,1.2-10.9,1.3-14.6,0c0,0,0,0-1.2,1.2 c-3.7,1.2-6.1-1.2-7.3,0c-1.2,1.2-2.4,0-4.9,0c-1.2,1.2-2.4,0-3.6-1.2c-1.2-1.2-1.2,1.2-1.2,1.2c-3.7,1.2-6.1,1.2-8.5,1.2 c-2.4,0-7.3,0-9.7,0c-7.3,0-13.4-1.2-21.9,0.1c-3.6-1.2-8.5-3.6-12.1-2.4c-2.4,0-3.6-1.2-6.1,1.2c-1.2,1.2-1.2-1.2-1.2-1.2 c-1.2-3.6,0-7.3,0-12.2c1.2-1.2,1.2-1.2,2.4-2.4c2.4,0,3.7-1.2,7.3,0c3.6,1.2,7.3,0,10.9-1.3l2.4,0c1.2,1.2,3.6,1.2,4.9,0 c1.2-1.2,2.4,0,3.6,1.2c2.4,0,2.4,0,4.9,0c2.4,0,2.4,0,3.6,1.2l1.2-1.2c3.6-1.2,7.3,0,10.9,1.2c1.2,1.2,3.7-1.2,6.1-1.2l1.2-1.2 c1.2,1.2,2.4,0,3.6,1.2c2.4,2.4,4.9,0,8.5,1.2c2.4,0,3.7-1.2,6.1-1.2c1.2,1.2,3.6,1.2,3.6,1.2c3.7-1.2,7.3,0,10.9,1.2 c6.1-1.2,10.9-1.3,15.8-1.3c2.4,0,7.3,0,10.9,1.2c2.4,0,3.7-1.2,6.1-1.2c0-2.4-1.2-1.2-2.4-2.4c1.2-1.2,2.4,0,2.4,0 c1.2,1.2,1.2,1.2,4.9,0l-1.2-1.2c2.4,0,3.6,1.2,4.9,0c2.4,0,2.4,0,4.9,0c3.6,1.2,4.9,0,7.3,0c2.4,2.4,4.9,2.4,6.1,1.2 c2.4,0,4.9,0,6.1,1.2c2.4,0,3.6-1.2,6.1-1.2c1.2-1.2,3.7-1.2,7.3,0c0,0,1.2-1.2,3.7-1.2c2.4,0,6.1-1.2,8.5,1.2c0,0,0,0,1.2-1.2 c0,0,2.4,0,3.6,1.2c1.2,1.2,1.2,1.2,3.7-1.2c-1.2-1.2-3.6-1.2-4.9-2.4c2.4-2.4,3.7-1.2,4.9,0c1.2,1.2,2.4,0,6.1,1.2 c2.4,2.4,6.1,1.2,8.5,1.2c2.4,0,4.9,0,7.3,0c2.4,0,3.7-1.2,4.9,2.4c1.2,1.2,2.4,0,2.4,0c1.2-1.2,2.4-2.4,2.4-2.4 c1.2,1.2,1.2,1.2,2.4,0c2.4-2.4,6.1-1.2,8.5-1.2c2.4,0,3.7-1.2,4.9-2.4c2.4,0,3.6,1.2,4.9,0c1.2-1.2,2.4,0,4.9,0 c2.4,0,3.6,1.2,6.1,1.2c2.4,0,6.1,1.2,8.5,1.2c1.2-1.2,3.7-1.2,6.1,1.2c1.2,1.2,1.2,1.2,2.4,0c2.4-2.4,3.7-1.2,4.9,0 c1.2,1.2,2.4,0,3.6,1.2c2.4,0,4.9,2.4,6.1-1.2c0,0,1.2-1.2,3.6,1.2c0,0,1.2,1.2,2.4,0c2.4,0,6.1,1.2,8.5-1.2c1.2-1.2,4.9,0,4.9,0 c3.7-1.2,7.3,0,12.2,0c4.9,0,8.5-3.7,13.4-1.3c1.2,1.2,4.9,0,6.1-1.2C421.6,239.6,424,239.6,425.2,240.8z M271.4,424.7 c-3.6-1.2-4.9,0-6.1,1.2c-6.1,1.2-13.4,1.3-17,0.1l-1.2-1.2c0-2.4-1.2-3.6-1.2-6.1c0-2.4,0-4.9-1.2-8.5c0-2.4,0-4.9-1.2-6.1 c0-2.4-1.2-3.6-1.2-6.1c0-2.4,0-4.9,0-7.3l-1.2-1.2c0-2.4,0-4.9,2.5-7.3c1.2-1.2,1.2-3.7,0-4.9c0,0,0,0-1.2,1.2 c-1.2-1.2,0-2.4-1.2-3.6c0,0-1.2-1.2,2.4-2.4c0-4.9,2.5-9.7,0-14.6c0,0-1.2-1.2,0-2.4c0,0,0,0-1.2-1.2c-1.2-1.2-1.2-3.6,0-4.9 c0,0,0,0,1.2-1.2c0-4.9,1.3-10.9,1.3-15.8c2.4-2.4,3.7-3.7,2.4-4.9c-2.4,0,0,2.4-1.2,1.2c0-2.4-2.4-4.9-1.2-6.1c2.4,0,2.4,0,3.7-1.2 c0-2.4,1.2-6.1,0-9.7c0,0,1.2-1.2,0-2.4c-1.2-6.1-1.2-10.9,0.1-17c0-2.4,1.2-3.7,0-4.9c0-4.9,0-9.7-1.2-15.8c0-2.4-1.2-3.6,0-4.9 c-1.2-1.2-1.2,1.2-2.4,0l1.2-1.2c2.4-2.4,1.2-3.6,1.2-6.1c1.2-1.2,0-2.4,0-4.9c-1.2-1.2,1.2-1.2,1.2-3.7c-2.4-4.9,1.3-10.9,0.1-17 c-2.4-4.9,0-9.7,0-14.6c0-4.9,1.2-8.5,0-12.2c0-4.9,0-9.7,1.3-13.4c1.2-3.7,1.2-6.1,1.2-8.5c0-2.4,0-4.9,0-7.3c0-4.9,0-9.7,1.3-15.8 c0,0,0,0-1.2-1.2c-2.4-2.4,0-4.9-2.4-7.3c-1.2-1.2,0-2.4,0-4.9c-1.2-1.2,0-2.4,1.2-3.7c1.2-1.2-1.2-1.2-1.2-1.2c0-2.4,0-4.9,0-7.3 c0-2.4-1.2-6.1,0-9.7c0-7.3,1.3-13.4,0.1-21.9c0-4.9,2.5-9.7,1.3-13.4c0-2.4,1.2-3.7-2.4-4.9c-1.2-1.2,1.2-1.2,1.2-1.2 c3.7-1.2,7.3,0,10.9,1.2c1.2,1.2,2.4,0,2.4,2.4c4.9,0,6.1,1.2,3.6,3.6c-1.2,3.7,0,7.3,1.2,10.9l0,2.4c0,2.4,0,4.9,1.2,6.1 c1.2,1.2,0,2.4-1.2,3.6c0,2.4,0,2.4,0,4.9c0,2.4,0,2.4-1.2,3.7l1.2,1.2c1.2,3.6,0,7.3-1.3,10.9c-1.2,1.2,1.2,3.6,1.2,6.1l1.2,1.2 c-1.2,1.2,0,2.4-1.2,3.7c-2.4,2.4,0,4.9-1.2,8.5c-1.2,1.2,1.2,3.6-1.2,6.1c-1.2,1.2,0,2.4-1.2,3.7c1.2,3.6,0,7.3-1.3,10.9 c1.2,6.1,1.2,10.9,1.2,15.8c3.6,3.6,2.4,7.3,2.4,9.7c0,2.4,0,4.9,0,7.3c2.4,0,1.2-1.2,2.4-2.4c1.2,1.2,0,2.4,0,2.4 c-1.2,1.2-1.2,1.2,0,4.9l1.2-1.2c-1.2,1.2-1.2,3.7-2.4,4.9c0,2.4,1.2,3.6,0,4.9c-1.2,3.6,1.2,6.1,1.2,8.5c-1.2,1.2-1.2,3.7,0,4.9 c0,2.4-1.2,3.7-1.2,6.1c0,2.4,1.2,3.6,2.4,4.9c1.2,1.2,1.2,3.6,0,7.3c-1.2,1.2,0,2.4,0,4.9c0,2.4,0,4.9-2.5,7.3c0,0,0,0,1.2,1.2 c0,0,0,2.4-1.2,3.7c-1.2,1.2-1.2,1.2,0,2.4c1.2-1.2,1.2-3.7,2.4-4.9c2.4,2.4,1.2,3.6,0,4.9c1.2,3.6,2.4,4.9,0,7.3 c-1.2,3.7-1.2,6.1,0,9.7c0,2.4,0,4.9,0,7.3c1.2,1.2,2.4,2.4-1.2,3.7c-1.2,1.2,0,2.4,0,2.4s1.2,1.2,0,2.4c-1.2,1.2-1.2,1.2,0,2.4 c2.4,2.4,1.2,6.1,1.2,8.5c0,2.4,1.2,3.6,2.4,4.9c0,2.4-1.2,3.7,0,4.9c1.2,1.2,0,2.4,0,4.9c0,2.4-1.2,3.7-1.2,6.1 c0,2.4-1.2,6.1-1.2,8.5c1.2,1.2,1.2,3.6-1.2,6.1c-1.2,1.2-1.2,1.2,0,2.4c2.4,2.4,1.2,3.6,0,4.9c-1.2,1.2,0,2.4-1.2,3.7 c0,2.4-2.4,4.9,1.2,6.1c0,0,1.2,1.2-1.2,3.7c0,0-1.2,1.2,0,2.4c0,2.4-1.2,6.1,1.2,8.5c1.2,1.2,0,4.9,0,4.9c1.2,3.6,0,7.3,0,12.2 c0,4.9,3.6,8.5,1.2,13.4c-1.2,1.2,0,4.9,1.2,6.1C272.7,421,271.5,422.2,271.4,424.7z' /%3E%3C/svg%3E%0A");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.c-parallax-scene-description__title {
+	margin-bottom: 1rem;
+	color: #c5b4aa;
+}
+
+.c-parallax-scene-description__text {
+	margin-bottom: 0;
+	color: #c5b4aa;
+}
+
+.c-parallax-scene-description--book-stack {
+	top: 950px;
+	   left: 1100px;
+}
+
+.c-parallax-scene-description--photo-stack {
+	top: 900px;
+	left: 1750px;
+}
+
+.c-parallax-scene-description--typewriter {
+	top: 800px;
+	left: 2600px;
+}
+
+.c-parallax-scene-description--archive {
+	top: 750px;
+	left: 3450px;
+}
+
+.c-parallax-scene-description--video {
+	top: 1650px;
+	left: 1300px;
+}
+
+.c-parallax-scene-description--calendar {
+	top: 1350px;
+	left: 1750px;
+}
+
+.c-parallax-scene-description--turntable {
+	top: 1550px;
+	left: 3500px;
+}
+
+.c-parallax-scene-description--newspaper {
+	top: 2000px;
+	   left: 1800px;
+}
+
+.c-parallax-scene__book-stack,
+.c-parallax-scene__photo-stack,
+.c-parallax-scene__typewriter,
+.c-parallax-scene__archive,
+.c-parallax-scene__video,
+.c-parallax-scene__calendar,
+.c-parallax-scene__poetry,
+.c-parallax-scene__smoking-pipe,
+.c-parallax-scene__cup,
+.c-parallax-scene__turntable,
+.c-parallax-scene__newspaper {
+	position: absolute;
+	pointer-events: all;
+	z-index: 1;
+}
+
+.c-parallax-scene__table:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__book-stack:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__photo-stack:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__typewriter:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__archive:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__video:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__calendar:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__poetry:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__smoking-pipe:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__cup:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__turntable:hover ~ .c-parallax-scene-description,
+.c-parallax-scene__newspaper:hover ~ .c-parallax-scene-description {
+	opacity: 1;
+	visibility: visible;
+}
+
+.c-parallax-scene__table {
+	position: absolute;
+	width: 4718px;
+	height: 2949px;
+}
+
+.c-parallax-scene__book-stack {
+	top: 325px;
+	left: 325px;
+}
+
+.c-parallax-scene-book-stack {
+	width: 925px;
+	height: 1000px;
+	cursor: pointer;
+	/* transition: filter .3s ease-in-out; */
+	transition: opacity .3s ease-in-out;
+}
+
+.c-parallax-scene-book-stack::after {
+	position: absolute;
+	top: 0;
+	right: -80px;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	content: "";
+}
+
+.c-parallax-scene-book-stack:hover {
+	/* filter: brightness(0.5); */
+	opacity: .5;
+}
+
+.c-parallax-scene-book-stack__container {
+	position: relative;
+}
+
+.c-parallax-scene-book-stack__item {
+	position: absolute;
+	transition: transform .3s ease-in-out;
+}
+
+.c-parallax-scene-book-stack__item--top {
+	top: 32px;
+	left: 442px;
+	width: 318px;
+	height: 423px;
+	filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.6));
+	transform: rotate(-15deg);
+}
+
+.c-parallax-scene-book-stack__item--right {
+	top: 460px;
+	left: 665px;
+	width: 318px;
+	height: 423px;
+	z-index: 1;
+	transform: rotate(-5deg);
+}
+
+.c-parallax-scene-book-stack__item--bottom {
+	top: 520px;
+	left: 615px;
+	width: 318px;
+	height: 423px;
+	filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.6));
+	transform: rotate(-5deg);
+}
+
+.c-parallax-scene-book-stack__item--left {
+	top: 458px;
+	left: 90px;
+	width: 318px;
+	height: 423px;
+	filter: drop-shadow(16px 8px 16px rgba(0, 0, 0, 0.5));
+	transform: rotate(-35deg);
+}
+
+.c-parallax-scene-book-stack:hover .c-parallax-scene-book-stack__item--right {
+	transform: translate(50px, -25px) rotate(-3deg);
+}
+
+.c-parallax-scene-book-stack:hover .c-parallax-scene-book-stack__item--bottom {
+	transform: translate(-25px, 25px) rotate(-7deg);
+}
+
+.c-parallax-scene__photo-stack {
+	top: 660px;
+	left: 1515px;
+}
+
+.c-parallax-scene-photo-stack {
+	width: 756px;
+	height: 518px;
+	filter: filter: brightness(1) drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.6));
+	/* transition: filter .3s ease-in-out; */
+	transition: opacity .3s ease-in-out;
+}
+
+.c-parallax-scene-photo-stack::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: -64px;
+	z-index: 1;
+	content: "";
+}
+
+.c-parallax-scene-photo-stack:hover {
+	/* filter: brightness(0.5) drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.6)); */
+	opacity: .5;
+}
+
+.c-parallax-scene-photo-stack__container {
+	position: relative;
+}
+
+.c-parallax-scene-photo-stack__item {
+	position: absolute;
+}
+
+.c-parallax-scene-photo-stack__item--left {
+	top: 132px;
+	left: 0;
+	width: 199px;
+	height: 302px;
+	transform: rotate(-75deg);
+}
+
+.c-parallax-scene-photo-stack__item--left-center {
+	top: 0;
+	left: 80px;
+	width: 161px;
+	height: 256px;
+	transform: rotate(-45deg);
+}
+
+.c-parallax-scene-photo-stack__item--right-center {
+	top: 112px;
+	left: 296px;
+	width: 204.09px;
+	height: 281.94px;
+	border-radius: 8px;
+	box-shadow: inset 0 0 0 7px #f0e2d2;
+	transform: rotate(-30deg);
+}
+
+.c-parallax-scene-photo-stack__item--right {
+	top: 178px;
+	left: 458px;
+	width: 205.15px;
+	height: 174.64px;
+	border-radius: 8px;
+	box-shadow: inset 0 0 0 7px #f0e2d2;
+	transform: rotate(-30deg);
+}
+
+.c-parallax-scene-photo-stack__item--camera {
+	top: 240px;
+	left: 64px;
+	width: 349px;
+	height: 174px;
+	transform: rotate(-15deg);
+}
+
+.c-parallax-scene__typewriter {
+	top: 248px;
+	left: 2228.48px;
+}
+
+.c-parallax-scene-typewriter {
+	width: 905px;
+	height: 763px;
+	filter: brightness(1) drop-shadow(0px 0px 32px rgba(0, 0, 0, 0.6));
+	transform: rotate(15deg);
+	/* transition: filter .3s ease-in-out; */
+	transition: opacity .3s ease-in-out;
+}
+
+.c-parallax-scene-typewriter:hover {
+	/* filter: brightness(0.5) drop-shadow(0px 0px 32px rgba(0, 0, 0, 0.6)); */
+	opacity: .5;
+}
+
+.c-parallax-scene__archive {
+	top: 349.76px;
+	left: 3383.13px;
+}
+
+.c-parallax-scene-archive {
+	/* width: 549px;
+	height: 809px; */
+	width: 532px;
+	height: 643px;
+	/* filter: brightness(1) drop-shadow(16px 16px 24px rgba(0, 0, 0, 0.25)); */
+	filter: brightness(1) drop-shadow(10px 10px 32px rgba(0, 0, 0, 0.6));
+	transform: rotate(30deg);
+	/* transition: filter .3s ease-in-out; */
+	transition: opacity .3s ease-in-out;
+}
+
+.c-parallax-scene-archive:hover {
+	/* filter: brightness(0.5) drop-shadow(16px 16px 24px rgba(0, 0, 0, 0.25)); */
+	opacity: .5;
+}
+
+.c-parallax-scene__video {
+	width: 796px;
+	height: 553px;
+	left: 754px;
+	top: 1355px;
+	filter: brightness(1) drop-shadow(0px 24px 16px rgba(0, 0, 0, 0.6));
+	/* transition: filter .3s ease-in-out; */
+	transition: opacity .3s ease-in-out;
+}
+
+.c-parallax-scene__video:hover {
+	/* filter: brightness(0.5) drop-shadow(0px 24px 16px rgba(0, 0, 0, 0.6)); */
+	opacity: .5;
+}
+
+.c-parallax-scene__calendar {
+	width: 560px;
+	height: 400px;
+	left: 1580px;
+	top: 1200px;
+	filter: brightness(1) drop-shadow(0px -12px 8px rgba(0, 0, 0, 0.8));
+	transform: rotate(5.87deg);
+	/* transition: filter .3s ease-in-out; */
+	transition: opacity .3s ease-in-out;
+}
+
+.c-parallax-scene__calendar:hover {
+	/* filter: brightness(0.5) drop-shadow(0px -12px 8px rgba(0, 0, 0, 0.8)); */
+	opacity: .5;
+}
+
+.c-parallax-scene__poetry {
+	width: 572px;
+	height: 757px;
+	left: 2243.93px;
+	top: 1066px;
+	transform: rotate(15deg);
+}
+
+.c-parallax-scene-poetry__content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 3.75rem 2.5rem 3.75rem 6.5rem;
+}
+
+@font-face {
+	font-family: "a_OldTyperNr";
+	src: url("/local/templates/levitansky/assets/fonts/aOldTyperNr/aOldTyperNr.woff"), url("/local/templates/levitansky/assets/fonts/aOldTyperNr/aOldTyperNr.woff2");
+}
+
+.c-parallax-scene-poetry__title {
+	margin-bottom: 2.5rem;
+	font-family: "a_OldTyperNr", serif;
+	font-size: 1.5rem;
+	font-weight: normal;
+	line-height: 1.25;
+	letter-spacing: 0.01em;
+	color: #000;
+}
+
+.c-parallax-scene-poetry__text {
+	margin-bottom: 0;
+	font-family: "a_OldTyperNr", serif;
+	font-size: 1rem;
+	letter-spacing: 0.01em;
+	color: #000;
+}
+
+.c-parallax-scene-poetry__text > span {
+	display: block;
+	min-height: 1rem;
+}
+
+.c-parallax-scene__smoking-pipe {
+	width: 222px;
+	height: 177px;
+	left: 2655px;
+	top: 1565px;
+	filter: drop-shadow(4px 6px 6px rgba(0, 0, 0, 0.45));
+}
+
+.c-parallax-scene__cup {
+	width: 234px;
+	height: 200px;
+	left: 2987px;
+	top: 1155px;
+}
+
+.c-parallax-scene__turntable {
+	top: 1319px;
+	left: 3196.52px;
+}
+
+.c-parallax-scene-turntable {
+	width: 1183px;
+	height: 969px;
+	filter: brightness(1) drop-shadow(40px 40px 24px rgba(0, 0, 0, 0.4));
+	transform: rotate(25deg);
+	/* transition: filter .3s ease-in-out; */
+	transition: opacity .3s ease-in-out;
+}
+
+.c-parallax-scene-turntable:hover {
+	/* filter: brightness(0.5) drop-shadow(40px 40px 24px rgba(0, 0, 0, 0.4)); */
+	opacity: .5;
+}
+
+.c-parallax-scene__newspaper {
+	left: 1385px;
+	top: 1835px;
+}
+
+.c-parallax-scene-newspaper {
+	width: 839px;
+	height: 646px;
+	filter: brightness(1) drop-shadow(24px 16px 16px rgba(0, 0, 0, 0.5));
+	transform: rotate(-15deg);
+	/* transition: filter .3s ease-in-out; */
+	transition: opacity .3s ease-in-out;
+}
+
+.c-parallax-scene-newspaper:hover {
+	/* filter: brightness(0.5) drop-shadow(24px 16px 16px rgba(0, 0, 0, 0.5)); */
+	opacity: .5;
+}
+
+
+.c-main-page-promo {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100vh;
+	padding-top: 3.75rem;
+	overflow: scroll;
+	background-color: #1a1a1a;
+}
+
+.c-main-page-promo__parallax {
+	width: 4718px;
+	height: 2949px;
+	transform: translate(calc((4718px - 100%) / -2), calc((2949px - 100%) / -2));
+}
+
+@media (min-width: 75em) {
+	.c-main-page-promo {
+		padding-top: 12rem;
+		overflow: hidden;
+	}
+
+	.c-main-page-promo::before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 1;
+		height: 12.5rem;
+		content: "";
+		pointer-events: none;
+		background: linear-gradient(180deg, rgba(27, 27, 27, 1) 25%, rgba(27, 27, 27, .85) 50%, rgba(27, 27, 27, 0) 100%);
+	}
+
+	.c-main-page-promo__parallax {
+		top: calc((2949px - 100%) / -2);
+		left: calc((4718px - 100%) / -2);
+		width: 4718px;
+		height: 2949px;
+		transform: translate3d(0, 0, 0) rotate(0deg) !important;
+	}
+}

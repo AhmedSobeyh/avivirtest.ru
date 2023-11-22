@@ -1,0 +1,102 @@
+/** START: Media section item */
+.c-media-section-item {
+	position: relative;
+}
+
+.c-media-section-item__img {
+	height: 18.3125rem;
+	background-color: #f2f2f2;
+}
+
+.c-media-section-item__body {
+	padding-top: 1rem;
+}
+
+.c-media-section-item__title {
+	font-size: 1.25rem;
+	font-weight: 700;
+	letter-spacing: 0.01em;
+	color: #123a54;
+}
+
+.c-media-section-item__link {
+	text-decoration: none;
+	color: #123a54;
+}
+
+.c-media-section-item__link:hover {
+	color: #123a54;
+}
+
+.c-media-section-item__date {
+	margin-top: 0.5rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0.01em;
+	color: #123a54;
+}
+
+/** END: Media section item */
+
+/** START: Media section carousel */
+.c-media-section-carousel__title {
+	margin-bottom: 0;
+	font-size: calc(1.325rem + 0.9vw);
+	text-align: center;
+}
+
+.c-media-section-carousel__container {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+
+.c-media-section-carousel__swiper-container {
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
+
+.c-media-section-carousel__swiper-slide {
+	width: 13.75rem;
+	margin-right: 2rem;
+}
+
+.c-media-section-carousel__swiper-slide:last-of-type {
+	margin-right: 0;
+}
+
+@media (min-width: 48em) {
+	.c-media-section-carousel__swiper-container {
+		padding-right: calc((100vw - 45rem) / 2 + 1rem);
+		padding-left: calc((100vw - 45rem) / 2 + 1rem);
+	}
+}
+
+@media (min-width: 62em) {
+	.c-media-section-carousel__swiper-container {
+		padding-right: calc((100vw - 60rem) / 2 + 1rem);
+		padding-left: calc((100vw - 60rem) / 2 + 1rem);
+	}
+}
+
+@media (min-width: 75em) {
+	.c-media-section-carousel__title {
+		font-size: 2rem;
+	}
+
+	.c-media-section-carousel__container {
+		padding-right: 1rem !important;
+		padding-left: 1rem !important;
+	}
+
+	.c-media-section-carousel__swiper-container {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.c-media-section-carousel__swiper-container .swiper-wrapper {
+		justify-content: center;
+	}
+}
+
+/** START: Media section carousel */

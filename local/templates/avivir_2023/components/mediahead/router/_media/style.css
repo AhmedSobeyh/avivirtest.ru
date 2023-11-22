@@ -1,0 +1,40 @@
+/** START: Media section page */
+.c-media-section-page {
+	/* position: relative; */
+	margin-top: -7.5rem;
+	background-color: #ebebeb;
+}
+
+.c-media-section-page__media-list {
+	padding-top: 2.5rem;
+	padding-bottom: 3.75rem;
+}
+
+.c-media-section-page__audio-section-list {
+	padding-bottom: 3.75rem;
+}
+
+.c-media-section-page__photo-section-carousel {
+	padding-bottom: 3.75rem;
+}
+
+@media (min-width: 48em) {
+	.c-media-section-page {
+		margin-top: -16.75rem;
+	}
+
+	.c-media-section-page__media-list {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+
+	.c-media-section-page__photo-section-carousel {
+		padding-bottom: 5rem;
+	}
+
+	.c-media-section-page__audio-section-list {
+		padding-bottom: 5rem;
+	}
+}
+
+/** END: Media section page */

@@ -1,0 +1,154 @@
+/* START: Biblio list item */
+.c-biblio-list-item {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding: 1.5rem 1.75rem 2rem;
+	background-color: #fff;
+	border-radius: 0.5rem;
+	transition: box-shadow .15s ease-in-out;
+}
+
+.c-biblio-list-item:hover {
+	box-shadow: 0 0.5rem 0.5rem 0.25rem rgba(188, 188, 188, 0.2);
+}
+
+.c-biblio-list-item__media {
+	margin-bottom: 1rem;
+}
+
+.c-biblio-list-item__img {
+	padding-top: 1.75rem;
+	padding-bottom: 1.75rem;
+	object-fit: contain;
+}
+
+.c-biblio-list-item__container {
+	display: flex;
+	flex-direction: column;
+}
+
+.c-biblio-list-item__header {
+	margin-bottom: 1rem;
+}
+
+.c-biblio-list-item__title {
+	margin-bottom: 0;
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+}
+
+.c-biblio-list-item__title-link {
+	color: #bf6b6b;
+	text-decoration: none;
+	transition: color .15s ease-in-out;
+}
+
+.c-biblio-list-item__title-link:hover {
+	color: #d8484c;
+}
+
+.c-biblio-list-item__body {
+	margin-bottom: 1rem;
+}
+
+.c-biblio-list-item__text {
+	margin-bottom: 0;
+}
+
+.c-biblio-list-item__footer {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(10rem, max-content));
+	column-gap: 1.25rem;
+	row-gap: 0.5rem;
+	margin-top: auto;
+}
+
+.c-biblio-list-item__section-link {
+	position: relative;
+	z-index: 1;
+	font-size: 0.875rem;
+	letter-spacing: 0.1px;
+	text-decoration: none;
+	transition: color .15s ease-in-out;
+}
+
+.c-biblio-list-item__reading-time {
+	font-size: 0.875rem;
+	color: #bdbdbd;
+}
+
+.c-biblio-list-item__reading-time::before {
+	display: inline-flex;
+	width: 0.75rem;
+	height: 0.875rem;
+	margin-right: 0.25rem;
+	content: '';
+	vertical-align: middle;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 394 512'%3E%3Cpath fill='%23bdbdbd' d='M381.7,489.4h-20.5v-66.1c0-64.6-54.4-103.2-106.7-140.9c-7.2-5.2-16.4-15.1-16.4-30.1c0-15.1,8.3-29.7,16.4-36 c50.9-39.3,106.7-76.3,106.7-140.9V22.6h20.5c6.8,0,12.3-5.1,12.3-11.3C394,5.1,388.5,0,381.7,0H12.3C5.5,0,0,5.1,0,11.3 c0,6.2,5.5,11.3,12.3,11.3h20.5v52.7c0,64.6,55.8,101.6,106.7,140.9c8.1,6.3,16.4,21,16.4,36c0,15.1-9.2,24.9-16.4,30.1 C87.2,320,32.8,358.7,32.8,423.3v66.1H12.3c-6.8,0-12.3,5.1-12.3,11.3c0,6.2,5.5,11.3,12.3,11.3h369.4c6.8,0,12.3-5.1,12.3-11.3 C394,494.5,388.5,489.4,381.7,489.4z M336.5,22.6v52.7c0,17.2-5,32-13.3,45.6c-1-0.2-2-0.4-3.1-0.4H70.5 C62.3,107,57.5,92.3,57.5,75.3V22.6H336.5z M155.4,198.9c-4-3.1-8.1-6.2-12.2-9.3c-20.7-15.8-40-30.6-55.1-46.5h217.9 c-15.1,16-34.5,30.8-55.1,46.5c-4.1,3.1-8.2,6.2-12.2,9.3c-13,10-22.2,27.3-24.6,44.9c-2.3,0.9-5.8,2.3-9.7,4 c-1.1,0.5-4.2,1.1-7.3,1.1c-3.1,0-6.2-0.6-7.3-1.1c-3.9-1.6-7.4-3-9.7-4C177.7,226.3,168.4,209,155.4,198.9z M153.4,301.1l1.4-1 c7.5-5.4,18.8-16,23.6-32.3c0.5,0.2,0.9,0.4,1.4,0.6c5.7,2.3,11.5,3,17.3,3c5.9,0,11.7-0.8,17.3-3c0.5-0.2,0.9-0.4,1.4-0.6 c4.8,16.3,16.1,26.9,23.5,32.3l1.4,1c49.3,35.5,95.9,69.1,95.9,122.2v31.6L232,412.3c-10.5-4.2-22.7-6-35-6c-12.3,0-24.5,1.8-35,6 L57.5,454.9v-31.6C57.5,370.2,104,336.7,153.4,301.1z M57.5,479.6L172,432.9c6-2.5,15.5-4.1,25-4.1c9.5,0,19,1.6,25,4.1l114.5,46.7 v9.8H57.5V479.6z' /%3E%3C/svg%3E%0A");
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.c-biblio-list-item__date {
+	font-size: 0.875rem;
+	color: #bdbdbd;
+}
+
+@media (min-width: 62em) {
+	.c-biblio-list-item {
+		flex-direction: row;
+		padding: 0;
+	}
+
+	.c-biblio-list-item__media {
+		width: 16.25rem;
+		margin-bottom: 0;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	.c-biblio-list-item__container {
+		padding: 1.75rem 2.25rem;
+		width: calc(100% - 16.25rem);
+	}
+}
+
+/* END: Biblio list item */
+
+/* START: Biblio list */
+.c-biblio-list__title {
+	margin-bottom: 2.5rem;
+	font-size: calc(1.325rem + 0.9vw);
+	text-align: center;
+}
+
+.c-biblio-list__layout {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+	column-gap: 1.25rem;
+	row-gap: 1.25rem;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+@media (min-width: 62em) {
+	.c-biblio-list__layout {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (min-width: 75em) {
+	.c-biblio-list__title {
+		margin-bottom: 3.75rem;
+		font-size: 2rem;
+	}
+
+	.c-biblio-list__container {
+		max-width: 72rem;
+	}
+}
+
+/* END: Biblio list */

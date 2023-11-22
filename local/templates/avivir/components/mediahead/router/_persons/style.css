@@ -1,0 +1,92 @@
+/* START: Person list page */
+.c-person-list-page {
+	position: relative;
+	margin-top: -5rem;
+	background-color: #f2f2f2;
+}
+
+.c-person-list-page__section-navbar {
+	margin-bottom: 2.5rem;
+}
+
+.c-person-list-page__person-list {
+	/* padding-top: 2.5rem; */
+	padding-bottom: 3.75rem;
+}
+
+@media (min-width: 48em) {
+	.c-person-list-page {
+		margin-top: -11.75rem;
+	}
+
+	.c-person-list-page__section-navbar {
+		margin-bottom: 5rem;
+	}
+
+	.c-person-list-page__person-list {
+		/* padding-top: 5rem; */
+		padding-bottom: 5rem;
+	}
+}
+/* END: Person list page */
+
+/* START: Person detail page */
+.c-person-detail-page {
+	position: relative;
+	/* background-color: #f2f2f2; */
+	margin-top: -7.5rem;
+}
+
+.c-person-detail-page__person-list {
+	padding-top: 3.75rem;
+	padding-bottom: 3.75rem;
+	background-color: #f2f2f2;
+}
+
+.c-person-detail-page-media-list {
+	position: relative;
+}
+
+.c-person-detail-page-media-list__title {
+	margin-bottom: 2.5rem;
+	font-size: calc(1.325rem + 0.9vw);
+	text-align: center;
+}
+
+.c-person-detail-page-media-list .c-audio-list {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.c-person-detail-page-media-list .c-audio-list__layout {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.c-person-detail-page__media-list {
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+}
+
+@media (min-width: 48em) {
+	.c-person-detail-page {
+		margin-top: -11.75rem;
+	}
+
+	.c-person-detail-page__person-list  {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+
+	.c-person-detail-page__media-list {
+		padding-bottom: 5rem;
+	}
+}
+
+@media (min-width: 75em) {
+	.c-person-detail-page-media-list__title {
+		margin-bottom: 3.75rem;
+		font-size: 2rem;
+	}
+}
+/* END: Person detail page */

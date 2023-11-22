@@ -1,0 +1,66 @@
+.chart-tooltip-cases-n-deaths {
+	width: 320px;
+	display: flex;
+	flex-direction: column;
+}
+
+.chart-tooltip-cases-n-deaths .data-row {
+	display: flex;
+}
+.chart-tooltip-cases-n-deaths .data-row .data-row-title {
+	flex: 0 0 220px;
+}
+.chart-tooltip-cases-n-deaths .data-row .data-row-value {
+	flex: 0 0 100px;
+	text-align: right;
+}
+
+.chart-tooltip-new-three-weeks-cases,
+.chart-tooltip-new-three-weeks-deaths {
+	width: 320px;
+	display: flex;
+	flex-direction: column;
+}
+
+.chart-tooltip-new-three-weeks-cases .data-row,
+.chart-tooltip-new-three-weeks-deaths .data-row {
+	display: flex;
+}
+
+.chart-tooltip-new-three-weeks-cases .data-row .data-row-title,
+.chart-tooltip-new-three-weeks-deaths .data-row .data-row-title {
+	flex: 0 0 220px;
+}
+.chart-tooltip-new-three-weeks-cases .data-row .data-row-value,
+.chart-tooltip-new-three-weeks-deaths .data-row .data-row-value {
+	flex: 0 0 100px;
+	text-align: right;
+}
+
+/* ________ */
+
+.regions-stat-map-tooltip {
+	display: flex;
+	flex-direction: column;
+}
+.regions-stat-map-tooltip-row {
+	display: flex;
+}
+
+.regions-stat-map-tooltip-row .regions-stat-map-tooltip-row-col-name {
+	flex: 1 0 auto;
+}
+.regions-stat-map-tooltip-row .regions-stat-map-tooltip-row-col-ind-name {
+	flex: 0 0 80px;
+	width: 80px;
+	font-weight: bold;
+}
+.regions-stat-map-tooltip-row .regions-stat-map-tooltip-row-col-ind-value {
+	flex: 0 0 70px;
+	width: 70px;
+	text-align: right;
+}
+
+.c-covid-stat-table__more-btn.is-hidden {
+	display: none;
+}

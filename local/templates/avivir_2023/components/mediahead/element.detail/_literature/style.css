@@ -1,0 +1,51 @@
+/* START: Literature detail */
+.c-literature-detail__container {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	padding-top: 2.5rem;
+	padding-bottom: 3.75rem;
+}
+
+.c-literature-detail__media {
+	max-width: 16.25rem;
+	overflow: hidden;
+	background-color: #ebebeb;
+	border-radius: 0.25rem;
+}
+
+.c-literature-detail__img {
+	object-fit: cover;
+}
+
+.c-literature-detail__header {
+	margin-top: 2.5rem;
+}
+
+.c-literature-detail-header {
+	text-align: center;
+}
+
+.c-literature-detail-header__desc {
+	margin-bottom: 0;
+}
+
+.c-literature-detail__divider {
+	margin-top: 1.25rem;
+	margin-bottom: 1.25rem;
+}
+
+@media (min-width: 48em) {
+	.c-literature-detail__container {
+		padding-top: 0;
+		padding-bottom: 5rem;
+	}
+}
+
+@media (min-width: 62em) {
+	.c-literature-detail__container {
+		max-width: 60rem;
+	}
+}
+
+/* END: Literature detail */

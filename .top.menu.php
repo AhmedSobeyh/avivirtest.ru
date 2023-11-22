@@ -1,0 +1,53 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Импорт", 
+		"/services/parallelnyy-import/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"О компании", 
+		"/business/", 
+		Array(), 
+		Array("SUB"=>"1"), 
+		"" 
+	),
+	Array(
+		"Услуги", 
+		"/services/", 
+		Array(), 
+		Array("SUB"=>"1"), 
+		"" 
+	),
+	Array(
+		"Продукция", 
+		"/products/", 
+		Array(), 
+		Array("SUB"=>"1"), 
+		"" 
+	),
+	Array(
+		"Avishop", 
+		"https://shop.avivir.ru/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Медиа-центр", 
+		"/media/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Контакты", 
+		"/contacts/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

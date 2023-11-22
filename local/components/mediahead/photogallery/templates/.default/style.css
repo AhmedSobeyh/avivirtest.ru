@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.gallery_default {margin: 40px 0; padding: 0; position: relative; text-align: center;}
+.gallery_default h2 {text-align: center; margin: 0 0 30px 0;}
+
+.gallery_default .gallery {width: 100%; overflow: hidden; position: relative; text-align: left;}
+.gallery_default .gallery ul {list-style: none; padding: 0; margin: 0; width: 2000000px; font-size: 0; line-height: 0; position: relative;}
+.gallery_default .gallery ul li {position: relative; display: inline-block; vertical-align: middle; margin: 0; padding-right: 10px; width: 250px; height: 300px;}
+
+.gallery_default .gallery ul li.video,
+.gallery_default .gallery ul li.youtube {width: 425px;}
+
+/*.gallery_default .gallery ul li.video::after {content: ""; position: absolute; width: 80px; height: 80px; left: 50%; top: 50%; transform: translate(-40px, -40px); background: url('img/video.svg') no-repeat; background-size: 100%; opacity: 0.6;}*/
+
+.gallery_default .gallery ul li.video::after {content: "Видео"; position: absolute; width: calc(100% - 40px); left: 20px; bottom: 20px; background: url('img/video.svg') no-repeat 0 0; background-size: 30px; font-size: 14px; line-height: 1; text-shadow: 0px 0px 3px black; color: white; padding-top: 30px; font-weight: 600;}
+
+.gallery_default .gallery ul li .imgg {position: relative; width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center; background-size: cover;}
+.gallery_default .gallery ul li .imgg:after {content: ""; position: absolute; left: 0; bottom: 0; height: 40%; width: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.00) 0%, #000000 100%);}
+.gallery_default .gallery ul li .imgg:hover {opacity: 0.8;}
+.gallery_default .gallery ul li .imgg .desc {position: absolute; z-index: 1; left: 10px; bottom: 10px; width: calc(100% - 20px); color: white; opacity: 0.8; font-size: 14px; line-height: 1; text-shadow: 0px 0px 3px black;}
+
+.gallery_default .nav_but {display: inline-block; padding: 8px 5px; margin: 10px 0 0 0; line-height: 1; border: 2px solid #B3B3B3; border-radius: 100px;}
+.gallery_default .nav_but div {display: inline-block; margin: 0 3px; width: 19px; height: 19px; cursor: pointer; background-position: center center; background-repeat: no-repeat; background-size: 100%;}
+.gallery_default .nav_but div:hover {opacity: 0.8;}
+.gallery_default .nav_but div.prev {background-image: url('img/prev.svg');}
+.gallery_default .nav_but div.next {background-image: url('img/next.svg');}
+
+@media screen and (max-width: 812px)
+{
+	.gallery_default {margin-bottom: 0 0 20px 0;}
+	.gallery_default .gallery ul li {height: 200px;}
+}
+
+@media screen and (max-width: 536px)
+{
+	.gallery_default .gallery ul li {vertical-align: top; overflow: hidden; max-height: 330px; margin: 0;}
+}
+
+@media screen and (max-width: 425px)
+{
+	.gallery_default .gallery ul li {padding-right: 0px; width: 100vw;}
+	.gallery_default .gallery ul li.video,
+	.gallery_default .gallery ul li.youtube {width: 100vw;}
+}

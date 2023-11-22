@@ -1,0 +1,26 @@
+/* START: Partner list page */
+.c-partner-list-page {
+	background-color: #ebebeb;
+}
+
+.c-partner-list-page__container {
+	margin-top: -7.5rem;
+	margin-bottom: 1.75rem;
+}
+
+.c-partner-list-page__partner-list {
+    padding-top: 2.5rem;
+    padding-bottom: 3.75rem;
+}
+
+@media (min-width: 48em) {
+	.c-partner-list-page__container {
+		margin-top: -16.75rem;
+	}
+
+	.c-partner-list-page__partner-list {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+}
+/* END: Partner list page */
